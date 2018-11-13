@@ -18,7 +18,7 @@ client.connect((err) => {
   if (err) {
     return console.error("Connection Error", err);
   }
-  client.query("SELECT * FROM famous_people WHERE $1::text LIKE first_name", myArgs, (err, result) => {
+  client.query("SELECT * FROM famous_people WHERE first_name = $1", [userInput], (err, result) => {
     if (err) {
       return console.error("error running query", err);
     }
